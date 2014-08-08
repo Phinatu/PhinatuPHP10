@@ -1,0 +1,132 @@
+<body>
+<h3>Sopphie's Pan Africa </h3>
+<p>Welcome to Sophie's pan Africa, Let's help you with your search.</P>
+<p>Kindly fill the form below:</P>
+<br>
+<form method="POST" action="Lesson9Obj.php">
+<table>
+<tr>
+<td align="right">
+Name:
+</td>
+<td align="left">
+<input type="text" size="25" name="name" value="">
+</td>
+</tr>
+<tr>
+<td align="right">
+Sex:
+</td>
+<td align="left">
+<input type="text" size="25" name="sex" value="">
+</td>
+</tr>
+<tr>
+<td align="right">
+Email:
+</td><td align="left">
+<input type="text" size="25" name="email" value="">
+</td>
+</tr>
+<tr>
+<td align="right">
+Country:
+</td>
+<td align="left">
+<select name="reg">
+<option value="" />Please choose...
+<option value="Angola" />Angola
+<option value="Burundi" />Burundi
+<option value="Cameroon" />Cameroon
+<option value="Chad" />Chad
+<option value="Egypt" />Egypt
+<option value="Eritrea" />Eritrea
+<option value="Ethiopia" />Ethiopia
+<option value="Ghana" />Ghana
+<option value="Guinea" />Guinea
+<option value="Ivory Coast" />Ivory Coast
+<option value="Kenya" />Kenya
+<option value="Liberia" />Liberia
+<option value="Libya" />Libya
+<option value="Lesotho" />Lesotho
+<option value="Madagascar" />Madagascar
+<option value="Malawi" />Malawi
+<option value="Mozambique" />Mozambique
+<option value="Niger" />Niger
+<option value="Nigeria" />Nigeria
+<option value="Senegal" />Senegal
+<option value="Somalia" />Somalia
+<option value="South Africa" />South Africa
+<option value="Togo" />Togo
+<option value="Zimbabwe" />Zimbabwe
+</select>
+</td>
+</tr>
+<tr>
+<td align="right">
+Shop For:
+</td>
+<td align="left">
+<select name="picky">
+<option value="" />Please choose...
+<option value="Dress" />Dress
+<option value="Menswear" />Menswear
+<option value="Skirt" />Skirt
+<option value="Shirt" />Shirt
+<option value="Sport Wears" />Sport Wears
+<option value="Bras" />Bras
+<option value="Undies" />Undies
+<option value="Sales $ specials" />Sales & Specials
+<option value="Cosmetics" />Cosmetics
+<option value="Shoes" />Shoes
+<option value="Beddings" />Beddings
+<option value="Toys" />Toys
+<option value="Lingeries" />Lingeries
+</select>
+</td>
+</tr>
+<tr>
+<td align="right">
+Subject:
+</td>
+<td align="left">
+<input type="text" size="50" max="50" name="subject" value="">
+</td>
+</tr>
+<tr>
+<td align="right" valign="top">
+Message:
+</td>
+<td align="left">
+<textarea name="message" cols="50" rows="8">
+</textarea>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="left">
+How did you hear about us?
+<ul>
+<input type="radio" name="found" value="From a friend" />Word of Mouth<br/>
+<input type="radio" name="found" value="search" />Online Search<br/>
+<input type="radio" name="found" value="article" />Printed publication/article<br/>
+<input type="radio" name="found" value="website" />Online link/article<br/>
+<input type="radio" name="found" value="social media" />Facebook Page<br/>
+<input type="radio" name="found" value="blog" />Shoppers blog<br/>
+<input type="radio" name="found" value="other" />Others
+</ul>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<input type="checkbox" name="update1" checked="checked">Please email me updates about new products.<br/>
+<input type="checkbox" name="update2">Please email me updates about new store locations.<br/>
+<input type="checkbox" name="update3">Please email me updates about special offers and sales.
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<input type="submit" value="SUBMIT" />
+</td></tr>
+</table>
+</form>
+</body>
