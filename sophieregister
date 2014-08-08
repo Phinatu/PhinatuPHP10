@@ -1,0 +1,49 @@
+<?php
+   
+echo "<h1><font color=purple>Welcome to Sophie's Tabletstore</font></h1>";
+
+if (isset($_GET['delete_session'])) {
+  session_start(); //must always use this command to access the session and its variables
+  session_destroy(); //force the session to end
+
+  //Add in a page reload so that the session_destroy() will take effect
+  if($_SESSION && $_SESSION['name']){
+    $url = "http://".$_SERVER['HTTP_HOST']."/Sophie_register.php";
+    header("Location: ".$url);
+  }
+}
+else {
+   #start the session before any output
+   session_start();
+}
+
+   require($_SERVER['DOCUMENT_ROOT']."/Sophie_template_top.inc"); 
+
+if ($_GET['error'] == "1") {
+   $error_code = 1;  //this means that there's been an error and we need to notify the customer
+}
+
+?>
+<h3><font color=red>Kindly enter your name then CLICK on the image to shop with us</font></h3>
+
+<form method="GET" action="Sophie_product_update.php">
+<table>
+<tr>
+<td align="right">
+Name:
+</td>
+<td align="center">
+<input type="text" size="25" name="name" value="<? echo $_GET['name']; ?>" />
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<input type="image" value="PROCEED TO STORE!" src="Sophie.jpg" alt="submit Button" onMouseOver="this.src='Sophie.jpg'">
+</td></tr>
+</table>
+</form>
+<p>Copyright 2014 &copy; Sophie's TabletStores Inc</p>
+<font color=purple>Phone: 080-511-9288 | Email: customerdesk@chinatu.com | Hours: M-F 8am - 8pm Central Africa Time</font>
+<?
+   require($_SERVER['DOCUMENT_ROOT']."/template_bottom.inc"); 
+?>
