@@ -1,0 +1,28 @@
+<?php
+//echo statements to display appreciation
+echo "<h3>Thank you!</h3>";
+echo "<h4>We will love for you to check back some other time</h4>";
+echo "Here is a copy of your search Result:<br/><br/>";
+
+//echo users name to be entered in the text box
+echo "Name: ".$_POST['name']."<br/>";
+//echo sex of user
+echo "Sex: ".$_POST['sex']."<br/>";
+//show users email address
+echo "Email: ".$_POST['email']."<br/>";
+//retrieve users country or regionchoosen from the drop down
+echo "Country/Region: ".$_POST['reg']."<br/>";
+//display what user would what to shop for
+echo "Shop for: ".$_POST['picky']."<br/>";
+//subject of enquiries of comments
+echo "Subject: ".$_POST['subject']."<br/>";
+//enter users message  in the text box
+echo "Message: ".$_POST['message']."<br/>";
+//radio buttons to choose from that tells us how you heard about us
+echo "How you heard about us: ".$_POST['found']."<br/>";
+//checkbox to choose type of updates to expect
+echo "Update you about our new products: ".$_POST['update1']."<br/>";
+echo "Update you about our new store locations: ".$_POST['update2']."<br/>";
+echo "Update you about our special offers and sales: ".$_POST['update3']."<br/>";
+
+?>
