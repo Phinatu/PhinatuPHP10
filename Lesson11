@@ -1,0 +1,41 @@
+<?php
+//the superglobal $_GET is used here
+if (!($_GET['name'])) {
+
+  //the header() function means no output comes before it.
+   $query_string = $_SERVER['QUERY_STRING'];
+   $url = "http://".$_SERVER['HTTP_HOST']."/LESSON11OBJSCRIPT.php?".$query_string."&error=1";
+   header("Location: ".$url);
+   exit(); //stop the rest of the program from happening
+   
+}
+extract($_GET, EXTR_PREFIX_SAME, "get");
+
+$today = getdate();
+  $event_str = $today['month']." ".$today['mday'].", ".$today['year'];
+//get todays date
+$event_array = time();
+
+echo "<h3>IT's CHRISTMAS!</h3>";
+echo "Name: ".$name."<br/>";
+echo "Todays date is: ".$event_str."<br/>";
+"<br/>";
+
+//get event date
+$eventDate = mktime(0,0,0,12,25,$today['year']);
+echo "My favorite holiday is on: ".date('Y-m-d', $eventDate)."<br/>";
+  
+  //Calculate the number of days (rounded) between two dates
+  function calc_days($date1, $date2){
+    if ($date1 > $date2) {
+      return round((((($date1 - $date2)/60)/60)/24),0);
+    }
+    else { //if date has past, calculate to the following year
+      $date1 = $date1 + (365*24*60*60); //add a year(365 days) in seconds to the date
+      return round((((($date1 - $date2)/60)/60)/24),0);
+    }
+  }
+
+//get countdown to event
+  echo "It's ".calc_days($eventDate,$event_array)." days to Christmas!";
+?>
