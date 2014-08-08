@@ -1,0 +1,61 @@
+<?php
+#start the session before any output
+session_start();
+
+#store items
+if ($_POST['quantity'] > 0 && $_POST['quantity'] < 6){
+	echo "Adding<br>";
+	$id = $_POST['id'];
+	$_SESSION['cart'][$id]['quantity'] = $_POST['quantity'];
+	$_SESSION['cart'][$id]['price'] = $_POST['price'];
+	$_SESSION['cart'][$id]['name'] = $_POST['name'];
+}
+
+require($_SERVER['DOCUMENT_ROOT']."/Sophie_template_top.inc");
+
+$total = 0;
+?>
+
+<p>Below is the list of what you ordered for, you can continue shopping or place another order!</p>
+<h1 style='color:purple'>Your Cart!</h1>
+<table border="2">
+<tr style=background-color:blue;>
+<th>Quantity</th><th>Name</th><th>Price</th><th>Subtotal</th><th>Update Item</th>
+<tr>
+
+<?php
+#for each product pick,
+foreach ($_SESSION['cart'] as $id=>$prod){
+	$quantity = $prod['quantity'];
+	$price = $prod['price'];
+	$name = $prod['name'];
+	$subtotal = $price * $quantity;
+	if ($quantity > 0){
+		echo "<tr><form action=\"Sophie_product_update.php\" method=\"POST\">
+			<td>".$quantity."</td>
+			<td>".$name."</td>
+			<td>$".number_format($price,2)."</td>
+			<td>$".number_format($subtotal,2)."</td>
+			<td>";			
+			?>
+			<a href="Sophie_remove.php?id=<?php echo $id;?>">Remove</a>
+			<?php
+			echo "</td></tr>";
+	}    
+	$total += $subtotal;
+}
+?>
+</table>Total: $<?php echo number_format($total,2); ?><br />
+<form action="Sophie_product_update.php" method="post"><input class="submit" type="submit" value="Continue Shopping" /></form>
+<form action="Sophie_checkout.php" method="get"><input class="submit" type="submit" value="Place Your Order" />
+<input id="total" name="total" type="hidden" value="<?php echo number_format($total,2); ?>"/>
+</form>
+</body></html>
+
+ <link href="Sophie_styles.css" rel="stylesheet" type="text/css">
+<?
+if ($_POST['quantity'] > 5) {
+echo "<font color = red>You CANNOT order more than five(5) of each item!</font>";
+}
+?>
+<p>Copyright 2014 &copy; Sophie's TabletStores Inc</p>
