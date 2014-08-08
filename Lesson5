@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>Sales Receipt</title>
+    </head>
+    <body>
+        <h1> Healthyways  Restaurant</h1>
+      <body>
+ 
+ <table>
+    <tr>
+       <td>S/N</td>
+       <td>Dinner Entree</td> 
+       <td>Rate</td> 
+    </tr>
+    <tr>
+       <td>1.</td> <td>Steak</td> <td>$12.00</td>
+    </tr>
+    <tr>
+       <td>2.</td> <td>Salmon</td> <td>$15.00</td> 
+    </tr>
+    <tr>
+      <td>3.</td> <td>Barbecue pork</td> <td>$28.00</td>
+    </tr>
+    <tr>
+       <td>4.</td> <td>Chicken</td> <td>$25.00</td> 
+    </tr>
+  </table>
+  
+  <p>Beverages served includes:</P>
+  <table>
+    <tr>
+       <td>S/N</td>
+       <td>Beverage</td> 
+       <td>Rate</td> 
+    </tr>
+    <tr>
+       <td>1.</td> <td>Iced Coffee</td> <td>$4.39</td>
+    </tr>
+    <tr>
+       <td>2.</td> <td>Strawberry Julius</td> <td>$4.29</td> 
+    </tr>
+    <tr>
+      <td>3.</td> <td>Mexican Hot Chocolate</td> <td>$5.49</td>
+    </tr>
+    <tr>
+       <td>4.</td> <td>Lemonade</td> <td>$3.99</td> 
+    </tr>
+  </table>
+
+ <form method="POST" action="LESSON5Obj.php">
+           
+            Choose your entree:
+            <select name="dinner">
+                <option value="Steak">Steak</option>
+                <option value="Salmon">Salmon</option>
+                <option value="Barbecue Pork">BBQ Pork</option>
+                <option value="Chicken">Chicken</option>
+            </select>
+            <br /><br />
+            
+  <input type="submit" value="SUBMIT">
+     
+</form>
+</html>
