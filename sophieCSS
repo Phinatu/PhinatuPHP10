@@ -1,0 +1,14 @@
+body{
+	background-image: url('ipad 1.jpg');
+	background-repeat:no-repeat;
+	background-position:right;
+	background-size: 100%;
+}
+
+.content{
+	/*the 'a' part controls opacity, the 255s are setting 
+ 	*the red, green, and blue values all the way to white*/
+	background-color: rgba(255,255,255,.8);
+	margin: 5em;
+	padding: 1em;
+}
