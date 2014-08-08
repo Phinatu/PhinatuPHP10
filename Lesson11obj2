@@ -1,0 +1,91 @@
+<?php
+
+#get todays date
+$date = time();
+
+#get the day, month and year
+$day = date("d", $date);
+$month = date("m", $date);
+$year = date("Y", $date);
+
+#Fourteenth day of July 
+$fourteenth_day = mktime(0, 0, 0, $month, 1, $year);
+
+#Calendar header
+$title = date("F", $fourteenth_day);
+
+#Find the day of the week July begins
+$day_of_week = date("D", $fourteenth_day);
+
+#Days of week prior to fourteenth day of July must be empty
+#loop through using switch statements
+switch($day_of_week) {
+    case "Sun": $empty = 0; break;
+    case "Mon": $empty = 1; break;
+    case "Tue": $empty = 2; break;
+    case "Wed": $empty = 3; break;
+    case "Thu": $empty = 4; break;
+    case "Fri": $empty = 5; break;
+    case "Sat": $empty = 6; break;
+} //end switch statement
+
+#return number of days in the month of july 2014
+$days_in_month = cal_days_in_month(CAL_GREGORIAN, 7, 2014);
+
+#The table for the calendar
+echo "<table width=600 height=300>";
+echo "<tr><th colspan=7>$title $year</th></tr>";
+echo "<tr><td width=150>Sun</td><td width=150>Mon</td><td width=150>Tue</td><td width=150>Wed</td><td width=150>Thu</td>
+<td width=150>Fri</td><td width=150>Sat</td></tr>";
+
+#count days of each week
+$day_count = 1;
+
+echo "<tr>";
+
+#Output a blank cell for each day 
+while ($empty > 0) {
+    echo "<td>--</td>";
+    $empty = $empty -1;
+    $day_count++;
+}
+
+
+#This variable will track the day of the month
+$day_num = 1;
+
+
+#Build an array from $days_in_month
+for ($y = 1; $y <= $days_in_month; $y++) {
+    
+#fill table with data from first day of the month
+while ($day_num <= $days_in_month) {
+   echo "<td>";
+   if ($day_num == 14) {
+   //highlight the fourteenth day of july in red
+   echo  "<div style='color:red;'>My Birthday!!!</div>";
+     }
+     else {
+    echo $day_num;
+     }
+    echo "</td>";
+ $day_num++;
+ $day_count++;
+
+#If the counter has reached the 7th table cell, move to next row and start day count again
+if ($day_count > 7) {
+  echo "</tr><tr>";
+  $day_count = 1;
+ }
+}
+
+#fill blank days at end of table
+while ($day_count > 1 && $day_count <= 7) {
+  echo "<td>--</td>";
+   $day_count++;
+ }  
+}
+#close table
+echo "</tr></table>";
+
+?>
