@@ -1,0 +1,27 @@
+<?
+//list of Entree
+    $Steak = 1;
+    $Salmon = 2;
+    $Barbecue_pork = 3;
+    $Chicken  = 4;
+    $Customer_entree = $_GET["Entree_choice"];
+  
+  /*Conditional statements of the purchase of Entrees and Breverages*/
+   switch( $Customer_entree) {
+    case "1":
+     echo "Iced Coffee and Steak.";
+   break;
+     case "2":
+     echo "Strawberry Julius and Salmon.";
+   break;
+    case "3": 
+     echo "Mexican Hot Chocolate and Barbecue pork.";
+   break;
+    case "4": 
+     echo "Lemonade and Chicken.";
+  break;
+   default:
+     echo "Forget it, I'll pass!.";
+  }
+  
+  ?>
