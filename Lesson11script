@@ -1,0 +1,41 @@
+<?php
+
+if ($_GET['error'] == "1") {
+   $error_code = 1;  //this means there's an error that needs to be fixed
+} else {
+   $error_code = 0;
+}
+
+?>
+
+<body>
+<h3><div style='color:blue'>Countdown to my FAVORITE holiday</div></h3>
+<p>Hello people! This is a countdown to my favorite holiday<br>
+To find out what my favorite holiday is, enter your name or any name and click!</p>
+<?
+if ($error_code) {
+   echo "<div style='color:red'>Please input the following:</div>";
+}
+?>
+<form method="GET" action="Lesson11Obj.php">
+<table>
+<tr>
+<td align="right">
+Name:
+</td>
+<td align="left">
+<input type="text" size="25" name="name" value="<? echo $_GET['name']; ?>" />
+<?
+if ($error_code && !($_GET['name'])) {
+   echo "<b>Please enter a name.</b>";  //stating what the error is
+}
+?>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<input type="submit" value="GET Event!" />
+</td></tr>
+</table>
+</form>
+</body>
