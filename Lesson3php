@@ -1,0 +1,28 @@
+<?
+//list of Entrees
+    $Steak = 1;
+    $Salmon = 2;
+    $Barbecue_pork = 3;
+    $Chicken  = 4;
+    $Customer_entree = $_GET["Entree_choice"];
+
+    
+  
+  /*Conditional statements for the purchase of Entrees and Breverages*/
+   if ($Customer_entree == 1) {
+     echo "Iced Coffee and Steak.";
+   }
+   else if ($Customer_entree == 2 ) {
+     echo "Strawberry Julius and Salmon.";
+   }
+   else if ($Customer_entree == 3) {
+     echo "Mexican Hot chocolate and Barbecue Pork.";
+   }
+   else if ($Customer_entree == 4) {
+     echo "Lemonade and Chicken.";
+   }
+   else {
+     echo "Forget it, I'll pass!.";
+  }
+ 
+?>
