@@ -1,0 +1,62 @@
+<ol style="font-size:16px;">
+
+ <li>HEALTHYWAYS CHINESE RESTURANT(ALBERT'S CUISINES) MENU.</li>
+ 
+<?
+
+/* Here are a list of our Menu:*/
+ $Menu_a = "Apertizer";
+ $Menu_b = "Drinks";
+ $Menu_c = "Main course";
+ $Menu_d = "Desset";
+
+/* A break down of the varities of food, drinks and desset we serve*/
+ $Apetizer = "Brown sugar smokies $3.30<br> king crab $2.80<br> Hot attichoke and spinach dip $10.23<br> chocktail meatballs $7.20";
+ $Drinks = "White Wine $35<br> red wine $28<br> and Chapman $12<br>";
+ $Main_course = "Singapole Noodles $200,<br> Shredded Chicken $250.30<br> rice with mashed beef $234.20<br>Bean and Plantain $123.10";
+ $Desset = "Pineapple cakes $8.25<br> Tiramisu $2.43<br> Peanut butter pie $6.75<br> carrot cake $6.25";
+ 
+ 
+ 
+ echo "<BR>Alberts cousines is a part of Healthyways franchise and our MENU includes<br>
+       ".$Menu_a.", ".$Menu_b.", ".$Menu_c.", and ".$Menu_d."!<br>";
+       
+       echo "<BR>A break down of our Menu contents are as follows:<br>
+             APETIZER<br>".$Apetizer."  <br>DRINKS<br> ".$Drinks." <br>MAIN COURSE<br> ".$Main_course."  <br>DESSET<br>".$Desset."<br>";
+ 
+ ?>
+ 
+ <?
+ $sales_tax = "0.08"; //percentage tax
+ $tip_amount = "0.15"; //percentage tip
+ 
+ echo  "<BR> Our charges also includes ".$sales_tax." sales tax and ".$tip_amount." customer tip amount.<br>";
+ ?>
+ 
+ 
+ <?
+ 
+ $brown_sugar_smokies = "3.30"; //in dollars
+ $singapole_Noodles = "200";    //in dollars
+ $white_wine = "35";      //in dollars
+ $tiramisu = "2.43";       //in dollars
+ $subtotal = $brown_sugar_smokies + $white_wine + $singapole_Noodles + $tiramisu;  //generating a subtotal for this customers order
+ 
+ ?>
+ 
+ <br/>
+ <ul>
+ 
+ <li> A meal of Brown sugar smokies, White wine, singapole noodles and Tiramisu will cost
+ 
+ <? echo $brown_sugar_smokies + $white_wine + $singapole_Noodles + $tiramisu; ?> </li>
+ 
+ <li> My subtotal bill will be <? echo $subtotal; ?> </li>
+ 
+ <li> My Grandtotal bill will be
+ 
+ <? echo $subtotal + ($subtotal * $sales_tax) + ($subtotal * $tip_amount); ?> </li> 
+ 
+ </ul>
+ 
+ </ol>
