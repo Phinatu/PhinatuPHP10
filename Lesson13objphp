@@ -1,0 +1,105 @@
+<?php
+
+//check if e-mail address is valid
+function isValidEmail($customer_email) {
+ $customer_email = preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$customer_email);
+   return $customer_email;
+}
+#start the session
+session_start();
+
+$customer_name = $_SESSION['name'];
+if (!($customer_name)) {
+   $customer_name = $_GET['name'];
+   
+}
+$customer_email = $_SESSION['email'];
+if (isValidEmail($_SESSION['email'])) {
+$customer_email = $_GET['email'];
+   if (!($_SESSION['downloaded'])){
+     $_SESSION['downloaded'] = $_GET['email'];
+   }
+ }
+ else { 
+        if ((isValidEmail($_GET['email'])) || ($_GET['email'] == "")){
+            $_SESSION['email'] = $_GET['email'];
+        }
+ else {
+if (!($customer_name && $customer_email || preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$customer_email))) {
+
+   #with the header() function, no output can come before it.
+$_SESSION['email'] = $_GET['email'];
+  //the header() function means no output comes before it.
+    
+   $query_string = $_SERVER['QUERY_STRING'];
+   #add a flag called "error" to tell Lesson13OBJTWO.php that something needs fixed
+   $url = "http://".$_SERVER['HTTP_HOST']."/Lesson13OBJTWO.php?".$query_string."&error=1";
+   header("Location: ".$url);
+   exit();  //stop the rest of the program from happening
+   
+}
+ else { 
+            $_SESSION['error'] = "1";
+        }
+    }
+}
+
+if (isset($_GET['remember'])) {
+   #the customer wants us to remember him/her for next time
+   $_SESSION['name'] = $customer_name;
+   $_SESSION['email'] = $customer_email;
+}
+
+
+echo "<h3><div style='color:green'>ACME Inc</div></h3>";
+echo "<h3>Thank you for Choosing ACME!</h3>";
+
+#get user agent
+$useragent = $_SERVER['HTTP_USER_AGENT'];
+
+//get users remote address
+$remoteaddr = $_SERVER['REMOTE_ADDR'];
+
+$correctAgent = false;
+
+require($_SERVER['DOCUMENT_ROOT']."/template_top.inc"); //include top template 
+
+#f user agent is windows and browser is IE or firefox download file
+if (preg_match('|Windows|', $useragent) && (preg_match('|MSIE|', $useragent) OR (preg_match('|Firefox|', $useragent)))) {
+    $correctAgent = true;
+}
+#f user agent is windows and browser is IE or firefox download file and the remote address(IP address) is NOT 202, you can not download file
+if ($correctAgent && (!preg_match('~^202\.~', $remoteaddr)) !== 0){
+#check if session been set with the email address
+
+    if (isValidEmail($_SESSION['email'])) { 
+#if the downloaded session has been set do not allow further downloads
+        if ($_SESSION['downloaded']){ 
+            echo "You can only download once per session!";
+        }
+ else { 
+ #allow the download and set the session to prevent further downloads until the session expires
+  echo "<h3>Your file is ready for download,<a href='download.php'>DOWNLOAD HERE!</a>";
+        }
+    }
+ else { 
+#if session is not set or the email address in the session is not valid
+  echo "Sorry you must register a VALID email address first!";  
+   $url = "http://".$_SERVER['HTTP_HOST']."/Lesson13OBJTWO.php";
+    }
+}
+#if the user agent or OS is incorrect
+elseif (!$correctAgent) { 
+    echo "<h3> Sorry but your browser appears to be incompatible with our downloader</h3><br/>";
+    echo "<b> If you are using a Windows computer please download the latest version of Internet Explorer <a href='http://www.microsoft.com/nz/windows/internet-explorer/default.aspx'>HERE</a></b><br/>";
+    echo "<b> If you are using a Macintosh computer please download the latest version of Firefox <a href='http://www.mozilla.com/en-US/firefox/u'>HERE</a></b><br/>";  
+}
+else { 
+#if the user is from the 202.x.x.x IP address, do not allow!
+ echo "You are not authorized to access this download";  
+ session_destroy();
+
+}
+
+require($_SERVER['DOCUMENT_ROOT']."/template_bottom.inc"); 
+?>
