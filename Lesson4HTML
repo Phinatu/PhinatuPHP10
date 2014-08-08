@@ -1,0 +1,40 @@
+<body>
+ <h3>HEALTHYWAYS Dinner Entree List</h3>
+ 
+ <p>For each Entree you buy, you get a brevarage to go with!</p>
+ <table>
+  <tr>
+       <td>S/N</td>
+       <td>Dinner Entree</td> 
+       <td>Rate</td> 
+    </tr>
+    <tr>
+       <td>1.</td> <td>Steak</td> <td>$12.00</td>
+    </tr>
+    <tr>
+       <td>2.</td> <td>Salmon</td> <td>$15.00</td> 
+    </tr>
+    <tr>
+      <td>3.</td> <td>Barbecue pork</td> <td>$28.00</td>
+    </tr>
+    <tr>
+       <td>4.</td> <td>Chicken</td> <td>$25.00</td> 
+    </tr>
+  </table>
+ 
+ <form method="GET" action="Lesson4Obj.php">
+ List of Entree:
+ <select name="Entree_choice">
+ <option value="">Choose Entree?</option>
+   <option value="1">Steak</option>
+   <option value="2">Salmon</option>
+   <option value="3">Barbecue Pork</option>
+   <option value="4">Chicken</option>
+</select>
+
+
+<input type="submit" value="SUBMIT" />
+
+</form>
+</body>
+ 
