@@ -1,0 +1,31 @@
+<?php
+ echo "<h4 style='padding:0px 200px;'>My Dailly Schedule</h4>";
+ 
+//an associative array that show's my daily schedule.
+$daily_schedule = array("the Day" => array("9am-10am" => "Staff briefing",
+                                          "10am-11am" => "Conference call and update from the branches",
+                                          "11am-12pm" => "Field work",
+                                          "12p-1pmm" => "Field work",
+                                          "1pm-2pm" => "Lunch break",
+                                          "2pm-3pm" => "Pick Joan from school and take her home",
+                                          "3pm-4pm" => "Meet with Dulla",
+                                          "4pm-5pm" => "Read and respond to mails"));
+                                      
+  //assign each value of the array to the parameter variables within list()  
+  //For each array element, use each() to access the element currently being pointed to by that cursor                                
+ 
+ while (list($key, $value) = each($daily_schedule)) {
+ //Echo the days schedule using $key
+    echo "Here is my schedule for ".$key.":";
+    echo "<br/>";
+    while (list($key2, $value2) = each($value)) {
+  //$value2 show's schedule for the indicated time
+  //$key2 displays the time
+        echo "Time: ".$key2." ";
+        echo $value2;
+        echo "<br/>";
+    }
+    echo "<br/>"; 
+}
+
+ ?>
