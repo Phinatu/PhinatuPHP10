@@ -1,0 +1,74 @@
+<?php
+
+if (isset($_GET['remember'])) {
+   
+   $expire_cookie = time() + (7 * 24 * 60 * 60);
+   setcookie("name",$name,$expire_cookie);
+   setcookie("email",$email,$expire_cookie);
+}
+
+if ($_COOKIE['email']) {
+        if (!($_COOKIE['downloaded'])){
+             setcookie("downloaded","Yes",$expire_cookie);
+        }
+    }
+    else {
+if ($_GET['email']){
+setcookie("email",$_GET['email'],$expire_cookie);
+            $url = "http://".$_SERVER['HTTP_HOST']."/Lesson13.php";
+            header("Location: ".$url);
+            exit();  
+        }
+        else {
+            setcookie("error","1",$expire_cookie);
+        }
+}
+echo "<h3><div style='color:green'>ACME Inc</div></h3>";
+echo "<h3>Thank you for Choosing ACME!</h3>";
+
+#get user agent
+$useragent = $_SERVER['HTTP_USER_AGENT'];
+
+//get users remote address
+$remoteaddr = $_SERVER['REMOTE_ADDR'];
+
+$correctAgent = false;
+
+require($_SERVER['DOCUMENT_ROOT']."/template_top.inc"); //include top template 
+
+#f user agent is windows and browser is IE or firefox download file
+if (preg_match('|Windows|', $useragent) && (preg_match('|MSIE|', $useragent) OR (preg_match('|Firefox|', $useragent)))) {
+    $correctAgent = true;
+}
+#f user agent is windows and browser is IE or firefox download file and the remote address(IP address) is NOT 202, you can not download file
+if ($correctAgent && (!preg_match('~^202\.~', $remoteaddr)) !== 0){
+    if  ($_COOKIE['email']) {
+    
+    if ($_COOKIE['downloaded']){
+            echo "You can only download once within SEVEN days of registration!";
+        }
+        else {
+     #allow the download and set cookie to prevent further downloads until the cookie expires
+ ?>
+         <br/><br/><a href="download.php"><b>Download NOW!</b></a>
+<?
+        }
+    }
+    else {
+       
+        echo "Register your email address";
+    }
+}
+#if the user agent or OS is incorrect
+elseif (!$correctAgent) { 
+    echo "<h3> Sorry but your browser appears to be incompatible with our downloader</h3><br/>";
+    echo "<b> If you are using a Windows computer please download the latest version of Internet Explorer <a href='http://www.microsoft.com/nz/windows/internet-explorer/default.aspx'>HERE</a></b><br/>";
+    echo "<b> If you are using a Macintosh computer please download the latest version of Firefox <a href='http://www.mozilla.com/en-US/firefox/u'>HERE</a></b><br/>";  
+}
+else {
+#if the user is from the 202.x.x.x IP address, do not allow!
+     echo"You are not authorized to access this download!";  
+}
+
+require($_SERVER['DOCUMENT_ROOT']."/template_bottom.inc"); 
+?>
