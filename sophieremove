@@ -1,0 +1,11 @@
+<?php
+
+#start the session before any output
+session_start();
+
+$id = $_GET['id'];
+unset($_SESSION['cart'][$id]);
+
+header("Location: /Sophie_Cart.php");
+
+?>
