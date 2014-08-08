@@ -1,0 +1,38 @@
+<?php
+
+echo "<h3><div style='color:green'>ACME Inc Downloads</div></h3>";
+echo "<h3>Thank you for visiting our site!</h3>";
+
+
+
+include($_SERVER['DOCUMENT_ROOT']."/template_top.inc");
+//get users agent
+$useragent = $_SERVER['HTTP_USER_AGENT'];
+//get users remote address
+$remoteaddr = $_SERVER['REMOTE_ADDR'];
+
+$correctAgent = false;
+
+//if the remote address(IP address) is 202, you can not download file
+if (preg_match('~^202\.~', $remoteaddr)) {  
+    echo "<h3>Sorry you CAN NOT download the requested software plugin</h3>";
+    exit();
+}
+//if user agent is windows and browser is IE or firefox download file
+else if (preg_match('|Windows|', $useragent) && (preg_match('|MSIE|', $useragent) OR (preg_match('|Firefox|', $useragent)))) {
+  echo "<h3> Your file is ready for download,<a href='download.php'>DOWNLOAD HERE!</a>";
+ 
+}
+//if user agent is maciintosh and browser is firefox,download
+else if (preg_match('|Macintosh|', $useragent) && (preg_match('|Firefox|', $useragent))) {
+   echo "<h3> Your file is ready for download,<a href='download.php'>DOWNLOAD HERE!</a>";
+}
+else {
+    echo "<h3> Sorry but your browser appears to be incompatible with our downloader</h3><br/>";
+    echo "<b> If you are using a Windows computer please download the latest version of Internet Explorer <a href='http://www.microsoft.com/nz/windows/internet-explorer/default.aspx'>HERE</a></b><br/>";
+    echo "<b> If you are using a Macintosh computer please download the latest version of Firefox <a href='http://www.mozilla.com/en-US/firefox/u'>HERE</a></b><br/>";
+    
+}
+
+   include($_SERVER['DOCUMENT_ROOT']."/template_bottom.inc");
+?>
