@@ -1,0 +1,15 @@
+<?php
+ #pre tags keep the asterisks more uniformly spaced
+ echo "<pre>";
+ for ($row = 0; $row < 15; $row++) {                
+ for ($column = 0; $column < 10; $column++) {       //column should contain 10 asterisks
+ if (($row < 1 || $row >= 15) ||( $column == 4)) {  //create a single row of asterisks, let the column start from the fourth asterisk on the row
+ echo "*";
+ } 
+ else echo " ";     //else ignore conditions. do nothing
+ }
+ echo "\n"; //the newline character starts the next row
+ } 
+ echo "</pre>";
+
+ ?>
