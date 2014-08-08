@@ -1,0 +1,48 @@
+  <!doctype html>
+  <html lang="en">
+  <head>
+    <title>My All Time Favorite Movies</title>
+    <meta charset="utf-8">
+    <script>                               
+       var twilight = {                                 //object variable twilight
+         title: "Twilight",                            //object title
+         year: 2008,                                   //object year
+         genre: "romance fantasy",                    //object genre
+         rating: "PG-13",                             //object rating
+         showtimes: ["7:00pm", "5:15am"]             //object showtime as array of string
+      };
+      
+      var salt = {                                     //object variable sa
+        title: "Salt",                               //object title value
+         year: 2010,                                 //object year
+         genre: "action thriller",                   //object genre
+         rating: "PG-16",                           // object rating
+         showtimes: ["8:00pm", "9:31pm"]            // object showtimes as array
+      };
+      
+      var maid in Manhatan = {                                  //object variable maid
+        title: "Maid in manhattan",                 //object title
+        year: 2002,                                 // object year
+        genre: "romance comedy",                   //object genre
+        rating: "PG-13",                           //object rating
+        showtimes: ["9:00pm", "10:34pm"]           //objest showtime as array
+      };
+   
+    var movies = [twilight, salt, maid];                     //Movie array
+    for (var i = 0; i < movies.length; i++) {                    //loop through the movie array
+      var movies = movies[i];
+      for (j = 0; j < movies.showtimes.length; j++) {         //loop through the showtimes array
+    div.innerHTML += movies.showtimes[j];
+       if (j < movies.showtimes.length - 1) {                  //if conditional statement
+      div.innerHTML += " to ";                                   //check to see if its the last, if its not, then add "to".
+    } 
+   }
+  }
+  }
+  </script>
+ </head>
+ <body>
+  <div id="movies">
+  </div>
+ </body>
+ </html>
