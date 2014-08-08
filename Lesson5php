@@ -1,0 +1,45 @@
+<?php
+  echo "<h4 style='padding:0px 200px;'>HEALTHYWAYS SALES RECEIPT</h4>";
+
+echo "Thank you for your patronage!</br>";
+echo "Our charges also includes:</br>";
+echo "8% sales tax and 15% tip</br>"; 
+echo "Below is what you ordered for and the total amount.</br>";
+ 
+#the function that calculate the total of  the customers entree and beverage choice, including tax and tip
+function get_Total($entree, $entree_price, $beverage, $beverage_price, $Tax, $Sales_tax, $Tip, $Tip_amount) {
+ #display two digits after float
+ $total = sprintf('$ %.2f',$entree_price + $beverage_price + $Sales_tax + $Tip_amount);
+	echo "<table>";
+	echo "<tr><td>$entree</td><td style='padding-left:10px;'>$entree_price</td></tr>";
+	echo "<tr><td>$beverage</td><td style='padding-left:10px;'>$beverage_price</td></tr>";
+	echo "<tr><td>$Tax</td><td style='padding-left:10px;'>$Sales_tax</td></tr>";
+	echo "<tr><td>$Tip</td><td style='padding-left:10px;'>$Tip_amount</td></tr>";
+	echo "<tr><td>Total</td><td style='padding-left:10px;'>$total</td></tr>";
+	echo "</table>";
+}
+
+#select beverage and entree
+ function select_beverage($dinner) {
+#if customer dinner choice is steak, drink choosen is Iced coffee
+   if ($dinner == "Steak") {
+        get_Total("Steak", 12.00, "Iced Coffee", 4.39, "Tax", 0.8, "Tip", 0.15);
+    }
+#else if statement
+   else if ($dinner == "Salmon") {
+	    get_Total("Salmon", 15.00, "Strawberry Julius", 4.29, "Tax", 0.8, "Tip", 0.15);
+   }
+   else if ($dinner == "Barbecue Pork") {
+	    get_Total("Barbecue Pork", 28.00, "Mexican Hot Chocolate", 5.49, "Tax", 0.8, "Tip", 0.15);
+   }
+   else {
+	    get_Total("Chicken", 25.00, "Lemonade", 3.99, "Tax", 0.8, "Tip", 0.15);
+  }
+}
+ 
+#The value of $dinner is what the customer  chooses
+$dinner = $_POST["dinner"];
+#Call the function select_beverage($dinner).
+select_beverage($dinner);
+
+ ?>
