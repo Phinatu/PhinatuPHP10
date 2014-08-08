@@ -1,0 +1,60 @@
+<? 
+// sentence to be translated into piglatin
+$sentence = "If you do not understand any part of my lesson feel free to ask questions";
+ 
+// turn sentence into several different word strings
+$words = explode(" ", $sentence);
+ 
+// function to translate the sentence
+function pig_Latin($TranslateWord) {
+  //regex to establish if the word starts with a vowel
+  if (preg_match("/^[aeiou]/", $TranslateWord)) {
+    // add ay to end of vowel in a word
+    $TranslateWord = $TranslateWord."ay";
+   //return translated sentence
+    return $TranslateWord;
+  }
+  //if a consonant that starts with qu, treat "u" as a consonant
+  elseif (preg_match('/^(qu)(.*)$/i', $TranslateWord)) {
+          $TranslateWord= preg_replace('/^(qu)(.*)$/i', "$2$1ay", $TranslateWord);
+          $TranslateWord = $TranslateWord;
+    return $TranslateWord;
+      }
+  // else means if it starts with a consonant locate the first vowel and add ay
+  else {
+    // call function to find first vowel
+    $i = locateFirstVowel($TranslateWord);
+ 
+    // need length for start/end point of first vowel
+    $length = strlen($TranslateWord);
+ 
+    // move to end the first chunk of consonants negative length takes off the rest
+    $moveToEnd = substr($TranslateWord, 0, -($length - $i));
+ 
+    // substring the sentence to translate from the located first vowel position
+    $TranslateWord = substr($TranslateWord, $i).$moveToEnd."ay";
+    return $TranslateWord;
+  }
+ 
+ }
+ 
+// used function to locate first vowel in a string
+function locateFirstVowel($TranslateWord) {
+  // loop through string
+  while ($TranslateWord[$i] != null) {
+    // regex, if = value return that key position $i
+    if (preg_match("/[aeiou]/", $TranslateWord[$i])) {
+    return $i;
+    }
+    $i++;
+  }
+  } 
+
+// loop through sentence and translate echo onto page
+foreach ($words as $value) {
+$translation = pig_Latin($value);
+  echo "$translation ";
+  
+  }
+  
+?>
