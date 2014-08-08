@@ -1,0 +1,38 @@
+<html>
+<head><title>List of People To Invite to Your Party</title></head>
+<body>
+<h3>We Gonna Parrrryyy!</h3>
+<?
+if ($error_code) {
+   echo "<font color=red>Please help us with the following:</font>";
+}
+?>
+<form method=GET action="LESON.php">
+ <table>
+<?
+ for ($i = 0; $i < 10; $i++) {
+ ?>
+ <tr>
+ <td>Name:</td>
+<td>Email:</td>
+</tr>
+<tr>
+<td align="left">
+<input type="text" size="25" name='name[]' value="<? echo $_GET['name'.$i]; ?>">
+<td align="left">
+<input type="text" size="25" name='email[]' value="<? echo $_GET['email'.$i]; ?>">
+<td align="left">
+</td>
+</tr>
+<?
+ }
+?>  
+<tr>
+<td colspan="2" align="center">
+<input type="submit" value="REGISTER!">
+</td>
+</tr>
+</table>
+</form>
+</body>
+</html>
