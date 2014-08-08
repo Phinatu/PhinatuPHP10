@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Daily Schedule</title>
+  <meta charset="utf-8">
+</head>
+<body>
+  <h1>Break down of my daily schedule</h1>
+
+<table border="1px">
+<form method="GET" action="Lesson6Obj.php">
+   <tr style="background-color:purple; color:white;">
+   <th>Appointment</th>
+   <th>Time</th>
+   <th>Place</th></tr>
+
+   <tr style="background-color:grey;">
+   <td>$daily_schedule[0]</td>
+   <td>$daily_schedule[1]</td>
+   <td>$daily_schedule[2]</td></tr>
