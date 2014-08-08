@@ -1,0 +1,77 @@
+<?php  
+ extract($_GET, EXTR_PREFIX_SAME, "get");
+ 
+ #construct email message
+$email_message = "Name: ".$name."
+        Gender: ".$gender."
+	Nationality: ".$nationality."
+	Email: ".$email."
+	User ID: ".$user_id."
+	Month: ".$month."
+	Date of arrival: ".$date."
+	Country of choice: ".$country."
+	Purpose of visit: ".$mimi."
+	Title: ".$title."
+	Message: ".$message."
+	How you heard about us: ".$found."
+	Your Logon password is: ".randomPassword();
+	
+//email headers
+$to = $_GET['email'];
+$from = "chinatuphils@yahoo.com";  //my email address.
+$email_title = $_GET['title'];
+    
+//mail to user
+mail($to, $email_title, $email_message, "From: ".$from);
+    
+ echo "<h3>Thank you!</h3>";
+ echo "Here is a copy of your enquiry:<br/><br/>";
+ 
+ echo "Name: ".$name."<br/>";
+echo "Gender: ".$gender."<br/>";
+echo "Nationality: ".$nationality."<br/>";
+echo "Email: ".$email."<br/>";
+echo "User ID: ".$user_id."<br/>";
+echo "Month of Arrival: ".$month."<br/>";
+echo "Date of Arrival: ".$date."<br/>";
+echo "Country of choice: ".$country."<br/>";
+echo "Purpose of visit: ".$mimi."<br/>";
+echo "Title: ".$title."<br/>";
+echo "Message: ".$message."<br/>";
+echo "How you heard about us: ".$found."<br/>";
+echo "Your Logon password is: ".randomPassword();
+echo "<br/>";
+
+//$_GET superglobals use to retrieve form inputs
+if (!($_GET['name'] && $_GET['gender'] && $_GET['nationality'] && $_GET['email'] 
+      && $_GET['user_id'] && $_GET['month'] && $_GET['date'] && $_GET['country'] && $_GET['title'] 
+      && $_GET['message']) || (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$email))) {
+     
+     #echo "Please make sure you've filled in all required information.";
+
+    $query_string = $_SERVER['QUERY_STRING'];
+   //$error to tell Lesson10OnjForm.php(the form) that something needs to be fixed
+   $url = "http://".$_SERVER['HTTP_HOST']."/LessonObj10Form.php?".$query_string."&error=1";
+   header("Location: ".$url);
+   exit();  //stop the rest of the program from happening
+    
+ }
+for ($i = 1; $i <= 3; $i++) {
+   $element_name = "update".$i;
+   echo $element_name.": ";
+   echo $element_name.": ";
+   echo $$element_name;
+   echo "<br/>";
+}
+//function to generate random password
+function randomPassword() {
+    $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
+    $password = array(); //remember to declare $password as an array
+    $alphaLength = strlen($alphabet) - 1; //put the length -1 
+    for ($i = 0; $i < 8; $i++) {
+        $n = rand(0, $alphaLength);
+        $password[] = $alphabet[$n];
+    }
+    return implode($password); //turn the array into a string
+}
+?>
