@@ -1,0 +1,58 @@
+<?php
+
+#start the session
+session_start();
+
+$customer_name = $_SESSION['name'];
+if (!($customer_name)) {
+	$customer_name = $_GET['name'];
+}
+
+
+if (isset($_GET['remember'])) {
+#the customer wants us to remember him/her for next time
+	$_SESSION['name'] = $customer_name;
+	$_SESSION['email'] = $customer_email;
+}
+
+echo "<div style='color:blue'>".$customer_name." Welcome to Sophie's Store</div><br/>";
+
+require($_SERVER['DOCUMENT_ROOT']."/Sophie_template_top.inc");
+
+$Tablets = array(array("id" => 1, "name" => "Google Nexus 7 (2013)", "price"         => 154.99),
+		array("id" => 2, "name" => "Sony Xperia Tablet Z", "price"          => 217.99),
+		array("id" => 3, "name" => "Apple IPad Air", "price"                => 175.99),
+		array("id" => 4, "name" => "LG G Pad 8.3", "price"                  => 257.99),
+		array("id" => 5, "name" => "Infinix Joypad 10", "price"             => 113.99),
+		array("id" => 6, "name" => "Samsung Galaxy Tab IV-T531", "price"    => 199.99),
+		array("id" => 7, "name" => "Asus Transformer Pad Infinity", "price" => 105.99),
+		array("id" => 8, "name" => "Amazon Kindle Fire HDX 8.9", "price"    => 214.99),
+		array("id" => 9, "name" => "Google Nexus 10", "price"               => 124.99),
+		array("id" => 10, "name" => "Samsung Galaxy Note 8.0", "price"      => 98.99));
+
+echo "<font color = green>Kindly NOTE that you have an ordering limit of five(5) per Item.</font>";
+
+echo "<h1><font color=\"purple\">View Our Range of Tablets!</font></h1>
+<table border=\"2\"><tr style=background-color:blue;><th>Quantity</th><th>Name</th><th>Price</th><th>Action</th></tr>";
+foreach ($Tablets as $prod){
+	?>
+	<tr><td><form action="Sophie_Cart.php" method="POST">
+	<input name="quantity" size="2" type="text" />
+	<input name="name" type="hidden" value="<?php echo $prod['name']; ?>"/>
+	<input name="id" type="hidden" value="<?php echo $prod['id']; ?>"/>
+	<input name="price" type="hidden" value="<?php echo number_format($prod['price'],2); ?>"/>
+	</td><td><?php echo $prod['name']; ?></td><td><?php echo "$".number_format($prod['price'],2); ?></td><td>
+	<input class="submit" type="submit" value="Add to Cart" /></td></form>
+	</tr>
+<?php
+}
+
+echo "</table>";
+echo $error_msg;
+?>
+
+<form action="Sophie_Cart.php"><input class="submit" type="submit" value="View Cart" /></form>
+</body></html>
+    <link href="Sophie_styles.css" rel="stylesheet" type="text/css">
+
+<p>Copyright 2014 &copy; Sophie's TabletStores Inc</p>
