@@ -1,0 +1,298 @@
+<?php
+if ($_GET['error'] == "1") {
+  $error_code = 1;
+ } 
+ else {
+   $error_code = 0;
+ }
+ 
+ ?>
+
+ <body>
+<h3 style='padding:0px 200px;'><div style='color:green'>ONE NUMBER TRAVEL & TOURISM</div></H3>
+<p>Welcome to One Number. From tourism to commercial enterprises, startup companies to large-scale mining enterprises,<br>
+   One Number is prepping itself to become one of the best options when it comes to international business ventures.<br>
+   These is reason why it is becoming a good idea to do business with us. Thats who we are and thats what we do<br>
+   Kindly fill the form below so we know how to help you.</p><br>
+<?
+if ($error_code) {
+    echo "<div style='color:red'>Please help us with the following:</div>";
+ }
+ ?>
+ <form method="GET" action="Lesson10Obj.php">
+<table>
+<tr>
+<td align="right">
+Name:
+</td>
+<td align="left">
+<input type="text" size="25" name="name" value"<? echo $_GET['name']; ?>" />
+<?
+if ($error_code && !($_GET['name'])) {
+    echo "<b>Please include your name.</b>";
+}
+?>
+</td>
+</tr>
+<tr>
+<td align="right">
+Gender:
+</td><td align="left">
+<input type="text" size="25" name="gender" value="<? echo $_GET['gender']; ?>" />
+<?
+if ($error_code && !($_GET['gender'])) {
+    echo "<b>Please indicate your gender.</b>";
+}
+?>
+</td>
+</tr>
+ <tr>
+<td align="right">
+Nationality:
+ </td><td align="left">
+ <input type="text" size="25" name="nationality" value="<? echo $_GET['nationality']; ?>" />
+ <?
+if ($error_code && !($_GET['nationality'])) {
+    echo "<b>Please state your Nationality.</b>";
+}
+?>
+ </td>
+ </tr>
+ <tr>
+<td align="right">
+Email:
+</td>
+<td align="left">
+<input type="text" size="25" name="email" value="<? echo $_GET['email']; ?>" />
+<?
+ if ($error_code && !($_GET['email'])) {
+   echo "<b>Please include your email address.</b>";
+}
+else if ($error_code && !preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$email)) {
+echo "<div style='color:red'>You entered and INVALID email address</div>";
+}
+?>
+</td>
+</tr>
+<tr>
+<td align="right">
+User ID:
+</td>
+<td align="left">
+<input type="text" size="25" name="user id" value="<? echo $_GET['user_id']; ?>" />
+<?
+if ($error_code && !($_GET['user_id'])) {
+   echo "<b>Please enter an ID.</b>";
+}
+?>
+</td>
+</tr>
+ <tr>
+<td align="right">
+Month of arrival:
+</td>
+<td align="left">
+<select name="month">
+<option value="" />Please select..
+  <option value="">Month</option>
+  <option value="January">January</option>
+  <option value="February">February</option>
+  <option value="March">March</option>
+  <option value="April">April</option>
+  <option value="May">May</option>
+  <option value="June">June</option>
+  <option value="July">July</option>
+  <option value="August">August</option>
+  <option value="September">September</option>
+  <option value="October">October</option>
+  <option value="Novemder">November</option>
+  <option value="December">December</option>
+ </select>
+ <?
+if ($error_code && !($_GET['month'])) {
+    echo "<b>Please indicate your arrival month.</b>";
+}
+?>
+</td>
+</tr>
+<tr>
+<td align="right">
+Date of arrival:
+</td>
+<td align="left">
+<select name="date">
+<option value="" />Please select..
+  <option value="">Day</option>			    
+  <option value='01'>01</option>
+  <option value='02'>02</option>
+  <option value='03'>03</option>
+  <option value='04'>04</option>
+  <option value='05'>05</option>
+  <option value='06'>06</option>
+  <option value='07'>07</option>
+  <option value='08'>08</option>
+  <option value='09'>09</option>
+  <option value='10'>10</option>
+  <option value='11'>11</option>
+  <option value='12'>12</option>
+  <option value='13'>13</option>
+  <option value='14'>14</option>
+  <option value='15'>15</option>
+  <option value='16'>16</option>
+  <option value='17'>17</option>
+  <option value='18'>18</option>
+  <option value='19'>19</option>
+  <option value='20'>20</option>
+  <option value='21'>21</option>
+  <option value='22'>22</option>
+  <option value='23'>23</option>
+  <option value='24'>24</option>
+  <option value='25'>25</option>
+  <option value='26'>26</option>
+  <option value='27'>27</option>
+  <option value='28'>28</option>
+  <option value='29'>29</option>
+  <option value='30'>30</option>
+  <option value='31'>31</option>
+</select>
+<?
+if ($error_code && !($_GET['date'])) {
+    echo "<b>Please indicate arrival date.</b>";
+}
+?>
+</tr>
+</td>
+<tr>
+<td align="right">
+What country do you intend to visit:
+</td>
+<td align="left">
+<select name="country">
+<option value="" />Please choose...
+<option value="Angola" />Angola
+<option value="Burundi" />Burundi
+<option value="Cameroon" />Cameroon
+<option value="Chad" />Chad
+<option value="Egypt" />Egypt
+<option value="Eritrea" />Eritrea
+<option value="Ethiopia" />Ethiopia
+<option value="Ghana" />Ghana
+<option value="Guinea" />Guinea
+<option value="Ivory Coast" />Ivory Coast
+<option value="Kenya" />Kenya
+<option value="Liberia" />Liberia
+<option value="Libya" />Libya
+<option value="Lesotho" />Lesotho
+<option value="Madagascar" />Madagascar
+<option value="Malawi" />Malawi
+<option value="Mozambique" />Mozambique
+<option value="Niger" />Niger
+<option value="Nigeria" />Nigeria
+<option value="Senegal" />Senegal
+<option value="Somalia" />Somalia
+<option value="South Africa" />South Africa
+<option value="Togo" />Togo
+<option value="Zimbabwe" />Zimbabwe
+</select>
+<?
+if ($error_code && !($_GET['country'])) {
+    echo "<b>Please indicate the country you intend visiting.</b>";
+}
+?>
+</td>
+</tr>
+<tr>
+<td align="right">
+Purpose of Visit:
+ </td>
+ <td align="left">
+ <select name="mimi">
+ <option value="" />Please choose...
+ <option value="Tourist"<?
+ if ($_GET['mimi'] == "Tourist") {
+   echo " selected";
+ }
+ ?> />I am coming for an official assignment.
+ <option value="Reservations"<?
+ if ($_GET['mimi'] == "Reservations") {
+     echo " selected";
+  }
+  ?> />I am a visitor with multiple needs.
+  <option value="Total service"<?
+  if ($_GET['mimi'] == "Total service") {
+     echo " selected";
+ }
+ ?> />I am a student coming for studies.
+ <option value="Bookings"<?
+ if ($_GET['mimi'] == "Bookings") {
+    echo " selected";
+ }
+ ?> />I have question about flights.
+  <option value="Available Airlines"<?
+  if ($_GET['mimi'] == "Available Airlines") {
+     echo " selected";
+ }
+ ?> />Others.
+ </select>
+ <?
+if ($error_code && !($_GET['mimi'])) {
+    echo "<b>Please indicate purpose of visit.</b>";
+}
+?>
+ </td>
+ </tr>
+ <tr>
+ <td align="right">
+ Title:
+ </td>
+ <td align="left">
+ <input type="text" size="50" max="50" name="title" value="<? echo $_GET['title']; ?>" />
+ <?
+if ($error_code && !($_GET['title'])) {
+    echo "<b>Please add a title for your enquiry.</b>";
+}
+?>
+ </td>
+ </tr>
+ <tr>
+ <td align="right" valign="top">
+ Message:
+ </td>
+<td align="left">
+<textarea name="message" cols="50" rows="8">
+<? echo $_GET['message']; ?>
+</textarea>
+<?
+if ($error_code && !($_GET['message'])) {
+    echo "<b>Please leave a message for us.</b>";
+}
+?>
+</td>
+</tr>
+<tr>
+<td cospan="2" align="left">
+How did you hear about us
+<ul>
+<input type="radio" name="found" value="wordofmouth" />Word of Mouth<br/>
+<input type="radio" name="found" value="search" />Online Search<br/>
+<input type="radio" name="found" value="article" />Printed publication/article<br/>
+<input type="radio" name="found" value="website" />Online link/article<br/>
+<input type="radio" name="found" value="social media" />Facebook<br/>
+<input type="radio" name="found" value="other" />Other
+</ul>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<input type="checkbox" name="update1" checked="checked" />Kindly email me updates about your services.<br/>
+<input type="checkbox" name="update2" />Kindly email me updates on new services rendered.<br/>
+<input type="checkbox" name="update3" />Kindly email me tour dates.
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<input type="submit" value="SUBMIT" />
+</td></tr>
+</table>
+</form>
+</body>
